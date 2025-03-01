@@ -7,3 +7,7 @@ librosa
 scipy.signal
 
 diegos readme 2
+
+fblahkfasf
+sdfksfkjkef
+sdfjsakdfks
