@@ -6,4 +6,4 @@ librosa
 
 scipy.signal
 
-diegos readme
+diegos readme 2
