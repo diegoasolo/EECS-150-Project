@@ -61,10 +61,9 @@ def main():
     folder_name = "audio_files"  # Change this to your folder name
     file_name = "piano-a_A_major.wav"  # Insert File name to be analysiised
 
-    # Construct full path
+    
     file_path = os.path.join(folder_name, file_name)
 
-    # Load and process the file
     audio, sr = load_audio(file_path)
     freqs, spectrum = compute_fft(audio, sr)
     plot_fft(freqs, spectrum, title=f"Frequency Spectrum of {file_name}")
