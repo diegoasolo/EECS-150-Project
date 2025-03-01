@@ -5,3 +5,5 @@ For this project youll need to instiall the following libraries:
 librosa 
 
 scipy.signal
+
+uedhise
