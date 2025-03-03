@@ -66,11 +66,11 @@ def main():
 
     audio, sr = load_audio(file_path)
     freqs, spectrum = compute_fft(audio, sr)
-    plot_fft(freqs, spectrum, title=f"Frequency Spectrum of {file_name}")
     max_freq = analyze_fft(freqs, spectrum) 
-
     max_note, max_octave = frequency_to_note(max_freq)
     print("Max frequency is", int(max_freq) , f"Hz or {max_note}{max_octave}")
+    plot_fft(freqs, spectrum, title=f"Frequency Spectrum of {file_name}")
+   
       
 
 if __name__ == "__main__":
