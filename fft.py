@@ -2,7 +2,6 @@ import numpy as np
 import math
 import librosa
 import librosa.display
-import scipy.signal
 import os
 import matplotlib.pyplot as plt
 
@@ -31,7 +30,7 @@ def plot_fft(freqs, spectrum, title="Frequency Spectrum"):
     plt.show()
 
 def analyze_fft(freqs, spectrum):
-    ''' Find Max freqnecy from fft plot'''
+    """ Find Max freqnecy from fft plot """
     max_index = np.argmax(spectrum)
 
     max_spec = spectrum[max_index]
@@ -40,8 +39,7 @@ def analyze_fft(freqs, spectrum):
     return max_freq
 
 def frequency_to_note(freq):
-    '''converts freqnecy into its coresponding note in 12-tone equal temeperment'''
-    
+    """converts freqnecy into its coresponding note in 12-tone equal temeperment"""
     A4 = 440.0 #refrence note
     n =  12 * np.log2(freq/ A4)
     n_rounded = int(round(n))
