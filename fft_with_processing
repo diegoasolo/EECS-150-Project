@@ -2,7 +2,6 @@ import numpy as np
 import math
 import librosa
 import librosa.display
-import scipy.signal
 import os
 import matplotlib.pyplot as plt
 import shutil
@@ -69,11 +68,11 @@ def main():
     # Load and process the file
     audio, sr = load_audio(file_path)
     freqs, spectrum = compute_fft(audio, sr)
-    plot_fft(freqs, spectrum, title=f"Frequency Spectrum of {file_name}")
     max_freq = analyze_fft(freqs, spectrum) 
-
     max_note, max_octave = frequency_to_note(max_freq)
     print("Max frequency is", int(max_freq) , f"Hz or {max_note}{max_octave}")
+    plot_fft(freqs, spectrum, title=f"Frequency Spectrum of {file_name}")
+    
     
     # Get user input for source
     note_source = input("Enter the source name: ")
