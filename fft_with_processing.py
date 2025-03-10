@@ -58,12 +58,14 @@ def frequency_to_note(freq):
 
 def main():
 
-    base_folder = "EECS-150-Project"  # Include the extra folder
+    os.chdir(r"C:\Users\ezgao\Desktop\EECS-150-Project-1")
+
+    # base_folder = "EECS-150-Project-1"  # Include the extra folder
     folder_name = "audio_files"
-    file_name = "piano-a_A_major.wav"
+    file_name = "whistle.wav"
 
     # Construct the correct full path
-    file_path = os.path.join(base_folder, folder_name, file_name)
+    file_path = os.path.join(folder_name, file_name)
 
     # Load and process the file
     audio, sr = load_audio(file_path)
@@ -75,13 +77,13 @@ def main():
     
     
     # Get user input for source
-    note_source = input("Enter the source name: ")
+    # note_source = input("Enter the source name: ")
     
     # Define directory and new filename
     notes_directory = "Processed_Notes"
     os.makedirs(notes_directory, exist_ok=True)  # Create directory if it doesn't exist
     
-    new_file_name = f"{max_note}{max_octave}_{note_source}.wav"
+    new_file_name = f"{max_note}{max_octave}.wav"
     new_file_path = os.path.join(notes_directory, new_file_name)
     
     # Copy and rename the file

@@ -15,7 +15,7 @@ def user_input():
 def load_audio_files(notes):
     audio_files = {}
     for note in notes:
-        file_name = f"[note].wav"
+        file_name = f"{note}.wav"
         if os.path.exists(file_name):
             audio_files[note] = AudioSegment.from_wav(file_name)
         else:
@@ -24,7 +24,7 @@ def load_audio_files(notes):
     return audio_files
 
 
-def adjust_note_duration(audio, desired_duration)
+def adjust_note_duration(audio, desired_duration):
     #get current note audio duration
     current_duration = len(audio) / 1000.0 #convert ms to s
     desired_duration_ms = desired_duration * 1000 #desired duration in ms
@@ -49,7 +49,7 @@ def create_final_audio(notes, durations, audio_files):
 
 def main():
     #get user input
-    notes, durations = get_user_input()
+    notes, durations = user_input()
 
     #load audio files
     audio_files = load_audio_files(notes)
