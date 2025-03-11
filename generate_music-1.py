@@ -28,11 +28,35 @@ def combine_audio(audio_segments, output_file):
     if not audio_segments:
         print("No valid audio files were loaded.")
         return
+
+def match_target_volume(audio, target_dBFS=-20.0):
+    """Normalize the volume of a single audio segment."""
+    change_in_dBFS = target_dBFS - audio.dBFS
+    return audio.apply_gain(change_in_dBFS)
+
+def combine_audio(audio_segments, output_file):
+    """Normalizes each audio segment, combines them, and exports as a .wav file."""
+    if not audio_segments:
+        print("No valid audio files were loaded.")
+        return
     
-    combined_audio = sum(audio_segments)  # Combine all audio segments
-    output_path = os.path.join(folder_path, output_file)  # Save in the same Processed_Notes folder
+    # Normalize each segment individually
+    normalized_segments = [match_target_volume(audio) for audio in audio_segments]
+
+    # Combine all normalized audio segments
+    combined_audio = sum(normalized_segments)
+  #  combined_audio = sum(audio_segments)  # Combine all audio segments
+
+    music_directory = "music"
+    os.makedirs(music_directory, exist_ok=True)
+    output_file = "combined_audio.wav"
+    output_path = os.path.join(music_directory, output_file)
     combined_audio.export(output_path, format="wav")
     print(f"Audio successfully exported as {output_path}")
+
+   # output_path = os.path.join(folder_path, output_file)  # Save in the same Processed_Notes folder
+   # combined_audio.export(output_path, format="wav")
+   # print(f"Audio successfully exported as {output_path}")
 
 if __name__ == "__main__":
     # Print the correct folder path for debugging
