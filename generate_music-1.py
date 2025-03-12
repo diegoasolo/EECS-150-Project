@@ -1,3 +1,4 @@
+# generate_music-1 allows for audio adjustment
 import os
 from pydub import AudioSegment
 
