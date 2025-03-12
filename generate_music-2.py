@@ -1,3 +1,4 @@
+# generate_music-2 allows for clipping and speed adjustment
 import os
 import numpy as np
 import soundfile as sf
