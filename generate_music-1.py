@@ -1,7 +1,6 @@
-# generate_music-1 allows for audio adjustment
 import os
 from pydub import AudioSegment
-
+# generate_music-1.py allows for a generalized volume adjustment and combining audio files together. this is best shortened version for class demo. 
 # Set working directory and folder
 os.chdir(r"C:\Users\ezgao\Desktop\EECS-150-Project-1")
 folder_name = "Processed_Notes"
@@ -50,8 +49,16 @@ def combine_audio(audio_segments, output_file):
 
     music_directory = "music"
     os.makedirs(music_directory, exist_ok=True)
-    output_file = "combined_audio.wav"
+
+    # Prompt the user for the desired file name
+    custom_name = input("Enter the desired name for the audio file (without extension): ").strip()
+    if not custom_name:
+        print("Invalid file name. Using 'untitled_audio' as default.")
+        custom_name = "untitled_audio"
+
+    output_file = f"{custom_name}.wav"
     output_path = os.path.join(music_directory, output_file)
+
     combined_audio.export(output_path, format="wav")
     print(f"Audio successfully exported as {output_path}")
 
