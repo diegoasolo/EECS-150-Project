@@ -6,6 +6,7 @@ import os
 import matplotlib.pyplot as plt
 import shutil
 from pydub import AudioSegment
+from pydub.silence import detect_nonsilent
 
 def load_audio(file_path , sample_rate=22050):
     """ Load an audio file and return its waveform and sample rate. """
@@ -62,7 +63,7 @@ def main():
 
     # base_folder = "EECS-150-Project-1"  # Include the extra folder
     folder_name = "audio_files"
-    file_name = "whistle.wav"
+    file_name = "cabinet_slowed.wav"
 
     # Construct the correct full path
     file_path = os.path.join(folder_name, file_name)
@@ -77,26 +78,18 @@ def main():
     
     
     # Get user input for source
-    # note_source = input("Enter the source name: ")
+    note_source = input("Enter the source name: ")
     
     # Define directory and new filename
     notes_directory = "Processed_Notes"
     os.makedirs(notes_directory, exist_ok=True)  # Create directory if it doesn't exist
     
-    new_file_name = f"{max_note}{max_octave}.wav"
+    new_file_name = f"{max_note}{max_octave}_{note_source}.wav"
     new_file_path = os.path.join(notes_directory, new_file_name)
     
     # Copy and rename the file
     shutil.copy(file_path, new_file_path)
     print(f"File saved as: {new_file_path}")
-
-    # Trim audio to 1 second if it's longer
-    audio = AudioSegment.from_wav(new_file_path)
-    if len(audio) > 1000:  # Length is in milliseconds
-        audio = audio[:1000]  # Keep only the first 1000ms (1 second)
-        audio.export(new_file_path, format="wav")
-        print("Audio trimmed to 1 second.")
-    
 
 if __name__ == "__main__":
     main()
